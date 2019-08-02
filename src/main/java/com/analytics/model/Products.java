@@ -1,6 +1,5 @@
 package com.analytics.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +14,7 @@ public class Products {
 	private int productId;
 	private String productName;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Categories categories;
 
 	

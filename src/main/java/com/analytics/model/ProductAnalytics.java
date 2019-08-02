@@ -1,6 +1,5 @@
 package com.analytics.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,10 +13,10 @@ public class ProductAnalytics {
 private int productCountId;
 private int count;
 
-@ManyToOne(cascade = CascadeType.ALL)
+@ManyToOne
 private Products products;
 
-@ManyToOne(cascade = CascadeType.ALL)
+@ManyToOne
 private UserDetails userdetails;
 
 public int getProductCountId() {

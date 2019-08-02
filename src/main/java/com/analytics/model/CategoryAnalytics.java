@@ -13,10 +13,22 @@ public class CategoryAnalytics {
 @GeneratedValue(strategy = GenerationType.AUTO)
 private int categoryCountId;
 private int Count;
-@ManyToOne(cascade = CascadeType.ALL)
+@ManyToOne
 private Categories categories;
 
-@ManyToOne(cascade = CascadeType.ALL)
+public UserDetails getUserDetails() {
+	return userDetails;
+}
+public void setUserDetails(UserDetails userDetails) {
+	this.userDetails = userDetails;
+}
+public Categories getCategories() {
+	return categories;
+}
+public void setCategories(Categories categories) {
+	this.categories = categories;
+}
+@ManyToOne
 private UserDetails userDetails;
 
 public int getCategoryCountId() {
