@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import com.analytics.model.Products;
 
 @Repository
-public interface ProductsRepository extends JpaRepository<Products, Integer>{
+public interface ProductsRepository extends JpaRepository<Products, Long>{
 
 	@Query("SELECT u FROM Products u WHERE u.categories.categoryId=:categoryId")
-	public List<Products>getProductsByCategory(@Param("categoryId") int categoryId);
+	public List<Products>getProductsByCategory(@Param("categoryId") Long categoryId);
 
 }

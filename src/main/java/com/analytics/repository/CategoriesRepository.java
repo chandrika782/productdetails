@@ -9,7 +9,7 @@ import com.analytics.model.Categories;
 import com.analytics.model.CategoryAnalytics;
 
 @Repository
-public interface CategoriesRepository extends JpaRepository<Categories, Integer> {
+public interface CategoriesRepository extends JpaRepository<Categories, Long> {
 	
 
 }

@@ -7,41 +7,65 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class CategoryAnalytics {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
-private int categoryCountId;
-private int Count;
+private Long categoryCountId;
+
+private Long Count;
+
+@JsonIgnore
 @ManyToOne
 private Categories categories;
+
+
+@JsonIgnore
+@ManyToOne
+private UserDetails userDetails;
+
+
+public Long getCategoryCountId() {
+	return categoryCountId;
+}
+
+
+public void setCategoryCountId(Long categoryCountId) {
+	this.categoryCountId = categoryCountId;
+}
+
+
+public Long getCount() {
+	return Count;
+}
+
+
+public void setCount(Long count) {
+	Count = count;
+}
+
+
+public Categories getCategories() {
+	return categories;
+}
+
+
+public void setCategories(Categories categories) {
+	this.categories = categories;
+}
+
 
 public UserDetails getUserDetails() {
 	return userDetails;
 }
+
+
 public void setUserDetails(UserDetails userDetails) {
 	this.userDetails = userDetails;
 }
-public Categories getCategories() {
-	return categories;
-}
-public void setCategories(Categories categories) {
-	this.categories = categories;
-}
-@ManyToOne
-private UserDetails userDetails;
 
-public int getCategoryCountId() {
-	return categoryCountId;
-}
-public void setCategoryCountId(int categoryCountId) {
-	this.categoryCountId = categoryCountId;
-}
-public int getCount() {
-	return Count;
-}
-public void setCount(int count) {
-	Count = count;
-}
+
 
 }

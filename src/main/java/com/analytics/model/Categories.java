@@ -12,21 +12,30 @@ import javax.persistence.OneToMany;
 public class Categories {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long categoryId;
+	
+	public Long getCategoryId() {
+		return categoryId;
+	}
 
-	private int categoryId;
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public List<Products> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Products> products) {
+		this.products = products;
+	}
+
 	private String categoryName;
 	
 	@OneToMany
 	private List<Products> products;
 
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-
+	
 	public String getCategoryName() {
 		return categoryName;
 	}

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.analytics.model.Categories;
+import com.analytics.model.CategoryAnalytics;
+import com.analytics.model.ProductAnalytics;
 import com.analytics.model.Products;
 import com.analytics.service.ProductsService;
 @RestController
@@ -24,13 +26,35 @@ public class ProductsController {
 		
 	}
 	@GetMapping("/all/{id}")
-	public ResponseEntity<List<Products>> getProducts(@PathVariable("id") int categoryId){
+	public ResponseEntity<List<Products>> getProducts(@PathVariable("id") Long categoryId){
 		return productsService.getAll(categoryId);
 		
 	}
 	@GetMapping("/user/{uid}/category/{cid}")
-	public ResponseEntity<List<Products>> getAllProducts(@PathVariable("uid") int userId,@PathVariable("cid")int categoryId){
+	public ResponseEntity<List<Products>> getAllProducts(@PathVariable("uid") int userId,@PathVariable("cid")Long categoryId){
 		return productsService.getAllProducts(userId, categoryId);
 		
 	}
+	@GetMapping("/{categoryId}/user/{userId}/products/{productId}")
+	public ResponseEntity<Products> getProduct(@PathVariable("categoryId") Long categoryId,@PathVariable("productId")Long productId, @PathVariable("userId") int userId){
+		return productsService.getProduct(categoryId,userId,productId);
+		}
+	
+	
+	@GetMapping("/analytics")
+	public ResponseEntity<List<CategoryAnalytics>> getCategorysAnalytics(){
+		return productsService.getCategorysAnalytics();
+		}
+
+	@GetMapping("/analytics/{categoryId}/products")
+	public ResponseEntity<List<ProductAnalytics>> getCategorysProductsAnalytics(Long categoryId) {
+		return productsService.getCategorysProductsAnalytics(categoryId);
+	}
+
+	@GetMapping("/analytics/products/{productId}")
+	public ResponseEntity<List<ProductAnalytics>> getProductsAnalytics(Long productId) {
+		return productsService.getProductsAnalytics(productId);
+
+	}
+	 
 }
